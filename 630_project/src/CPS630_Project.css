@@ -1,0 +1,80 @@
+header {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 10px 5px;
+  border: 1pt dotted green;
+  background-color: pink;
+  
+}
+td {
+	margin: 10px 5px;
+  border: 1pt dotted green;
+  
+  box-sizing: border-box;
+  width: 10%;
+}
+#table1 {
+	margin: 10px 5px;
+	border: 1pt dotted green;
+  background-color: yellow;
+  box-sizing: content-box;
+  width: 99%;
+}
+/*p {
+	text-align: center;
+	text-transform: uppercase;
+}*/
+
+#userRev {
+  text-align:left;
+  background-color: rgb(227, 227, 227);
+  margin: 0.6rem 3rem;
+  padding: 0.5rem 1rem;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-item {
+  flex-grow: 1;
+}
+
+.item-2 {
+  flex-basis: 7rem;
+}
+
+.item-3 {
+  flex-basis: 25rem;
+}
+
+.item-4 {
+  flex-basis: 45rem;
+}
+
+#review {
+  margin: 1.5rem 3rem;
+}
+
+.booklist {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media all and (min-width:40em) {
+  .item {
+    width: 50%;
+  }
+} 
+
+@media all and (min-width: 60em) {
+  .item {
+    width: 33.33%;
+  }
+}
+
+.item {
+  display: flex;
+  padding: 0.5em;
+  width: 100%;
+}
