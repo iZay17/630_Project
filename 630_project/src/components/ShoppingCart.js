@@ -14,11 +14,15 @@ const ShoppingCart = () => {
     }, [])
 
     const updateCart = () => {
-        if(window.localStorage.length > 0) {
+        if(window.localStorage.length > 2) {
             var placeholder = [];
             for (var i = 0; i < window.localStorage.length; i++) {
-                placeholder.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
-                setItems(placeholder);
+                if (localStorage.key(i) != "email" && localStorage.key(i) != "user_name"){
+                    placeholder.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+                    setItems(placeholder);
+                } else {
+                    continue;
+                }
             }
         } else {
             setItems([]);
@@ -26,7 +30,15 @@ const ShoppingCart = () => {
     }
 
     const clearCart = () => {
-       localStorage.clear();
+        for (var i = 0; i < window.localStorage.length; i++) {
+            console.log(localStorage.key(i));
+            if (localStorage.key(i) != "email" && localStorage.key(i) != "user_name") {
+                localStorage.removeItem(localStorage.key(i));
+            } else {
+                continue;
+            }
+        } 
+        setItems([]);
     }
 
     function allowDrop(e) 

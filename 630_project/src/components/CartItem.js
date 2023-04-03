@@ -9,8 +9,9 @@ const CartItem = ({title, price, img, quantity, code}) => {
         setTotal(tot);
     })
 
-    const removeItem = () => {
+    const deleteItem = () => {
         localStorage.removeItem(code);
+        setTotal(0);
     }
 
     return (
@@ -20,7 +21,7 @@ const CartItem = ({title, price, img, quantity, code}) => {
                     <td style={{textAlign: 'right'}}>{quantity}</td>
                     <td  style={{textAlign: 'right'}}>${price}</td>
                     <td  style={{textAlign: 'right'}}>${total}</td>
-                    <td style={{textAlign: 'center'}}><button onClick={removeItem} class="btnRemoveAction"><img src="http://localhost/630_Project/Assets/icon-delete.png" alt="Remove Item" /></button></td>
+                    <td style={{textAlign: 'center'}}><button onClick={deleteItem} class="btnRemoveAction"><img src="http://localhost/630_Project/Assets/icon-delete.png" alt="Remove Item" /></button></td>
 		</tr>
     )
 }

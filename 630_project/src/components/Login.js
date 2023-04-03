@@ -12,24 +12,22 @@ const Login = ()=> {
 
     const submitForm = (e)=> {
         e.preventDefault();
-        const sentData = {
-            email:user.email,
-            password:user.password   
-        }
+        let formData = new FormData();
+        formData.append('email', user.email);
+        formData.append('password', user.password);
 
-    console.log(sentData);
-
-    axios.post('http://localhost/react/login.php', sentData)
+    axios.post('http://localhost/630_Project/api/users/login.php', formData)
     .then(result=>{
-        if (result.data.Status === '200') {
-            window.localStorage.setItem('email', result.data.email);
-            window.localStorage.setItem('user_name', result.data.first_name+ ' '+result.data.last_name);
-            navigate('/Home');
-       
+        console.log(result.data["Email"]);
+        if (result.data["Email"] !== undefined) {
+            window.localStorage.setItem('email', result.data["Email"]);
+            window.localStorage.setItem('user_name', result.data["First_name"] + ' ' + result.data["Last_name"]);
+            window.dispatchEvent(new Event("storage"));
+            navigate('/');
         }
         else {
-            alert('Invalid user');
-    }
+            alert('Email or password is incorrect');
+        }
     })
 
     }

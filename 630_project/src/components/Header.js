@@ -1,8 +1,32 @@
 import React from 'react';
+import {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import '../style2.css';
 
 function Header() {
+    const [user, setUser] = useState(false);
+    
+    useEffect(() => {
+      isLoggedIn();
+      window.addEventListener('storage', () => {
+        isLoggedIn();
+      });
+    }, [])
+    
+    const Logout = () => { 
+      localStorage.clear();
+      setUser(false);
+    }
+    
+    function isLoggedIn() {
+      if(localStorage.getItem("email")) {
+        setUser(true);
+      }
+      else {
+        setUser(false);
+      }
+    }
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
       
@@ -23,11 +47,11 @@ function Header() {
             <li className="nav-item">
             <Link to="/Register" class="nav-link active">Register</Link>
             </li>
-      
-            <li className="nav-item">
-            <Link to="/Login" class="nav-link active">Login</Link>
-            </li>
             
+            <li className="nav-item">
+              {user ? <button onClick={Logout} class="nav-link active">Logout</button> : <Link to="/Login" class="nav-link active">Login</Link>}
+            </li>
+
             <li className="nav-item">
             <Link to="/ElectronicList" class="nav-link active">Shop</Link>
             </li>

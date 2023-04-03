@@ -11,7 +11,7 @@ const ShoppingItems = (props) => {
  
   const addToCart = () => {
     if (localStorage.getItem(props.code) !== null){
-      var count = Number((JSON.parse(localStorage.getItem(props.code)).Amount)) + quantity;
+      var count = Number((JSON.parse(localStorage.getItem(props.code)).Amount)) + Number(quantity);
       const item = {
         Name: props.title,
         Code: props.code, 

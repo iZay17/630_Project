@@ -29,6 +29,7 @@ function Reviews() {
             formData.append('item', item);
             formData.append('service', service);
             formData.append('reviewDate', reviewDate);
+            formData.append('useremail', localStorage.getItem("email"));
 
             axios.post(url, formData)
             .then(response => alert(response.data))
