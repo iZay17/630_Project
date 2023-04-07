@@ -11,7 +11,7 @@
     $method = $_SERVER['REQUEST_METHOD'];
     switch($method) {
         case "POST":
-            $review = $_POST['review'];
+            $review = $conn->real_escape_string($_POST['review']);
             $ratingService = $_POST['ratingService'];
             $ratingItem = $_POST['ratingItem'];
             $item = $_POST['item'] ;
@@ -32,10 +32,15 @@
                 $numberOfReviews = str_pad($numberOfReviews, 3, '0', STR_PAD_LEFT);
             }
             
-            $sql2 = "SELECT `Login-Id` FROM `users` WHERE `Email`='" . $_POST["useremail"] . "';";
-            $result2 = $conn -> query($sql2);
+            $sql = "SELECT `LoginId` FROM `users` WHERE `Email`='" . $_POST["useremail"] . "';";
+            $result2 = $conn -> query($sql);
+            if ($result2) {
+                $row = $result2->fetch_object();
+            } else {
+                echo "Could not fetch user account";
+            }
 
-            $sql = "INSERT INTO `reviews` (`reviewid`,`userid`, `rnservice`, `rnitem`, `review`, `services`, `item`, `dateofrev`) VALUES('RE-$numberOfReviews','U00001','$ratingService', '$ratingItem', '$review', '$service', '$item', '$reviewDate');";
+            $sql = "INSERT INTO `reviews` (`reviewid`,`loginid`, `rnservice`, `rnitem`, `review`, `services`, `item`, `dateofrev`) VALUES('RE-$numberOfReviews','$row->LoginId','$ratingService', '$ratingItem', '$review', '$service', '$item', '$reviewDate');";
 
             if($res = $conn -> query($sql)){
                 echo "Success";
