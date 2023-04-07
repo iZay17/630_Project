@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../CPS630_Project.css';
 
-const ElectronicList = () =>{
+const Shop = () =>{
   
   const [items, setItems] = useState('');
   useEffect(() => {
@@ -30,4 +30,4 @@ const ElectronicList = () =>{
   );
 }
 
-export default ElectronicList;
+export default Shop;

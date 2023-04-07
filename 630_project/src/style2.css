@@ -130,3 +130,8 @@ body {
     -webkit-user-select: none;
     -ms-user-select: none;
 }
+
+#user-welcome {
+	font-weight: 600;
+	
+}

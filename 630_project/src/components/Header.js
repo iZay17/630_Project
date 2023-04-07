@@ -5,6 +5,7 @@ import '../style2.css';
 
 function Header() {
     const [user, setUser] = useState(false);
+    const [admin, setAdmin]= useState(false);
     
     useEffect(() => {
       isLoggedIn();
@@ -21,6 +22,11 @@ function Header() {
     function isLoggedIn() {
       if(localStorage.getItem("email")) {
         setUser(true);
+        if(localStorage.getItem("email") == "zay@smartshop.ca"){
+          setAdmin(true);
+        } else {
+          setAdmin(false);
+        }
       }
       else {
         setUser(false);
@@ -37,27 +43,15 @@ function Header() {
         <ul className="navbar-nav mr-auto">
 
             <li className="nav-item active">
-            <Link to="/Home" class="nav-link active"><img src="http://localhost/630_Project/Assets/laptop.jpg" width="40" height="50" alt="laptop"></img></Link>
+            <Link to="/Home" class="nav-link active"><img src="http://localhost/630_Project/Assets/company-logo.png" width="50" height="40" alt="logo"></img></Link>
             </li>
 
             <li className="nav-item active">
             <Link to="/" class="nav-link active">Home</Link>
             </li>
-      
-            <li className="nav-item">
-            <Link to="/Register" class="nav-link active">Register</Link>
-            </li>
-            
-            <li className="nav-item">
-              {user ? <button onClick={Logout} class="nav-link active">Logout</button> : <Link to="/Login" class="nav-link active">Login</Link>}
-            </li>
 
             <li className="nav-item">
-            <Link to="/ElectronicList" class="nav-link active">Shop</Link>
-            </li>
-
-            <li className="nav-item">
-            <Link to="/Services" class="nav-link active">Types of Services</Link>
+            <Link to="/Shop" class="nav-link active">Shop</Link>
             </li>
 
             <li className="nav-item">
@@ -70,6 +64,22 @@ function Header() {
             
             <li className="nav-item">
             <Link to="/About" class="nav-link active">About Us</Link>
+            </li>
+
+            <li className="nav-item">
+              {admin ? <Link to="/Dasboard" class="nav-link active">Admin</Link> : "" }
+            </li>
+
+            <li className="nav-item">
+            {user ? "" : <Link to="/Register" class="nav-link active">Register</Link>}
+            </li>
+            
+            <li className="nav-item">
+              {user ? <button onClick={Logout} class="nav-link active">Logout</button> : <Link to="/Login" class="nav-link active">Login</Link>}
+            </li>
+
+            <li className="nav-item">
+              {user ? <p id="user-welcome">Welcome {localStorage.getItem("user_name")}</p> : "" }
             </li>
 
         </ul>

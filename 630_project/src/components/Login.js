@@ -5,7 +5,8 @@ import axios from 'axios';
 
 const Login = ()=> {
     let navigate = useNavigate();
-    const[user,setUser] = useState({email:'', password:''});
+    var page = "login"
+    const[user,setUser] = useState({email:"", password:""});
     const handleChange=(e)=>{
         setUser({...user, [e.target.name]: e.target.value});
     }
@@ -15,18 +16,20 @@ const Login = ()=> {
         let formData = new FormData();
         formData.append('email', user.email);
         formData.append('password', user.password);
+        formData.append('current_page', page);
 
-    axios.post('http://localhost/630_Project/api/users/login.php', formData)
+    axios.post('http://localhost/630_Project/api/users/users.php', formData)
     .then(result=>{
         console.log(result.data["Email"]);
         if (result.data["Email"] !== undefined) {
             window.localStorage.setItem('email', result.data["Email"]);
-            window.localStorage.setItem('user_name', result.data["First_name"] + ' ' + result.data["Last_name"]);
+            window.localStorage.setItem('user_name', result.data["First_name"] + " " + result.data["Last_name"]);
             window.dispatchEvent(new Event("storage"));
             navigate('/');
         }
         else {
             alert('Email or password is incorrect');
+            console.log(result);
         }
     })
 

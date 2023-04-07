@@ -5,7 +5,17 @@ import Services from './components/Services';
 import Login from './components/Login'
 import Register from './components/Register'
 import Home from './components/Home';
-import ElectronicList from './components/ElectronicList';
+import Shop from './components/Shop';
+import Checkout from './components/Checkout';
+import PaymentConfirmation from './components/PaymentConfirmation';
+import Invoice from "./components/Invoice";
+import Dashboard from './components/Dashboard';
+import ProductList from './components/ProductList';
+import ProductForm from './components/ProductForm';
+import OrderList from './components/OrderList';
+import OrderForm from './components/OrderForm';
+import ReviewList from './components/ReviewList';
+import ReviewForm from './components/ReviewForm';
 import Header from './components/Header';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import './App.css';
@@ -33,13 +43,29 @@ function App() {
           <Route path="/Login" element={<Login />} />
           <Route path="/About" element={<About />} />
           <Route path="/Contact" element={<Contact />} />
-          <Route path="/Reviews" element={<Reviews />} />
-          <Route path="/Services" element={<Services />} />
-          <Route path="/ElectronicList" element={
+          <Route path="/Reviews" element={
           <PrivateRoute>
-            <ElectronicList />
+            <Reviews />
+          </PrivateRoute>} />
+          <Route path="/Services" element={<Services />} />
+          <Route path="/Shop" element={
+          <PrivateRoute>
+            <Shop />
           </PrivateRoute>
         } />
+        <Route path="/Checkout" element={<Checkout/>} />
+        <Route path="/PaymentConfirmation" element={<PaymentConfirmation/>} />
+        <Route path="/Invoice" element={<Invoice/>} />
+        <Route path="/Dasboard" element={<Dashboard/>}/>
+        <Route path="/products" element={<ProductList/>} />
+        <Route path="/products/add" element={<ProductForm/>} />
+        <Route path="/products/edit/:id" element={<ProductForm/>}/>
+        <Route path="/orders" element={<OrderList/>} />
+        <Route path="/orders/add" element={<OrderForm/>} />
+        <Route path="/orders/edit/:id" element={<OrderForm/>} />
+        <Route path="/reviewsadmin" element={<ReviewList/>} />
+        <Route path="/reviewsadmin/add" element={<ReviewForm/>} />
+        <Route path="/reviewsadmin/edit/:id" element={<ReviewForm/>} />
         </Routes>
       </Router>
     </>

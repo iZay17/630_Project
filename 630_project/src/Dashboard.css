@@ -1,0 +1,52 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  .dashboard h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .dashboard-navigation {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  
+  .dashboard-link {
+    display: inline-block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    margin: 0 0.5rem;
+    text-decoration: none;
+    border-radius: 0.25rem;
+  }
+  
+  .dashboard-link:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+  }
+  
+  .dashboard-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .dashboard-products,
+  .dashboard-orders {
+    width: 45%;
+  }
+  
+  .dashboard-products h2,
+  .dashboard-orders h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  

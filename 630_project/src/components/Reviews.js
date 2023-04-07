@@ -77,7 +77,7 @@ function Reviews() {
                 {reviews && reviews.map((review, index) => (
                     <div id="userRev" key={index} >
                         <div class="flex-container">
-                            <p class="flex-item item-1">User: {review.UserId}</p><p class="flex-item item-2">Item: {review.Item}</p><p class="flex-item item-3">Services: {review.Services}</p>
+                            <p class="flex-item item-1">User: {review.LoginId}</p><p class="flex-item item-2">Item: {review.Item}</p><p class="flex-item item-3">Services: {review.Services}</p>
                         </div>
                         <div class="flex-container">
                             <p class="flex-item item-1">Item Rating: {review.RNItem}</p><p class="flex-item item-4">Service Rating: {review.RNService}</p>
